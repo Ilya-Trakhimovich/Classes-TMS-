@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace Classes_TMS_
 
 {
@@ -6,12 +7,13 @@ namespace Classes_TMS_
     {
         public void ShowMenu()
         {
-            Console.WriteLine("1 - add product;" +
-                              "2 - delete product;" +
-                              "3 - show products;" +
-                              "4 - exit.");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine("1 - Add product;" +
+                              " 2 - Remove product;" +
+                              " 3 - Show list of products;" +
+                              " 4 - Show total price of all products;" +
+                              " 5 - Exit.\n");
+            Console.ResetColor();
         }
-
-                
     }
 }

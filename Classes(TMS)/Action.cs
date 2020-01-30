@@ -7,8 +7,9 @@ namespace Classes_TMS_
     enum Action
     {
         AddProduct = 1,
-        DeleteProduct,
+        RemoveProduct,
         ShowProducts,
+        TotalPrice,
         Exit
     }
 }

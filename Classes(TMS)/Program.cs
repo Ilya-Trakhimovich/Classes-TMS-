@@ -6,7 +6,6 @@ namespace Classes_TMS_
     {
         static void Main(string[] args)
         {
-
             Menu menu = new Menu();
             Store store = new Store();
             bool flag = true;
@@ -22,14 +21,15 @@ namespace Classes_TMS_
                     case (int)Action.AddProduct:
                         {
                             var product = new Product();
-                            product = product.SetProduct(); // Returns new product.
-
+                            product = product.GetProduct(); // Returns new product.
                             store.AddProduct(product);
 
                             break;
                         }
-                    case (int)Action.DeleteProduct:
+                    case (int)Action.RemoveProduct:
                         {
+                            store.RemoveProduct();
+
                             break;
                         }
                     case (int)Action.ShowProducts:
@@ -38,14 +38,19 @@ namespace Classes_TMS_
 
                             break;
                         }
+                    case (int)Action.TotalPrice:
+                        {
+                           store.GetTotalPrice();
+
+                           break;
+                        }
                     case (int)Action.Exit:
                         {
                             Environment.Exit(0);
                             break;
                         }
-
                 }
             }
-        }   
+        }
     }
 }
