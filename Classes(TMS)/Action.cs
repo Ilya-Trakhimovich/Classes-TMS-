@@ -10,6 +10,8 @@ namespace Classes_TMS_
         RemoveProduct,
         ShowProducts,
         TotalPrice,
+        ChangeProductAmount,
+        ChangeProductPrice,
         Exit
     }
 }

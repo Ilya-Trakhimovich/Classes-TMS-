@@ -24,30 +24,11 @@ namespace Classes_TMS_
         }
 
         public void RemoveProduct()
-        {          
-            bool flagRemoveID = true;
+        {
             bool isRemoved = false;
             Product product = new Product();
-            string productName = product.GetProductName(); 
-            int productId = 0;
-
-            while (flagRemoveID)
-            {
-                Console.Write("Enter product's ID: ");
-
-                bool isCorrectID = Int32.TryParse(Console.ReadLine(), out productId);
-
-                if (!isCorrectID)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("ID is integer. Try again!\n");
-                    Console.ResetColor();
-                }
-                else
-                {
-                    flagRemoveID = false;
-                }
-            }
+            string productName = product.GetProductName();
+            int productId = GetProductId();
 
             for (var i = 0; i < _productList.Count; i++)
             {
@@ -62,7 +43,7 @@ namespace Classes_TMS_
             if (!isRemoved)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Error. Name or ID isn't correct. If you dont know product's NAME and ID open list of products.\n");
+                Console.WriteLine("Error. Name or ID isn't correct. If you dont know product's NAME and ID see the list of products.\n");
                 Console.ResetColor();
             }
         }
@@ -77,6 +58,149 @@ namespace Classes_TMS_
             }
 
             Console.WriteLine($"Total price: {totalPrice}$\n");
+        }
+
+        public int GetProductId()
+        {
+            bool flagId = true;
+            int productId = 0;
+
+            while (flagId)
+            {
+                Console.Write("Enter product ID: ");
+
+                bool isId = Int32.TryParse(Console.ReadLine(), out productId);
+
+                if (isId)
+                {
+                    flagId = false;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("ID is integer. Try again!\n");
+                    Console.ResetColor();
+                }
+            }
+
+            return productId;
+        }
+
+        public void ChangeProductPrice()
+        {
+            bool flagChangePrice = true;
+            int productId = GetProductId();
+            double priceChange = 0;
+            bool hasId = HasID(productId);
+
+            if (hasId)
+            {
+                while (flagChangePrice)
+                {
+                    Console.Write("Enter new product price: ");
+
+                    bool isChangePrice = double.TryParse(Console.ReadLine(), out priceChange);
+
+                    if (isChangePrice && priceChange >= 0)
+                    {
+                        flagChangePrice = false;
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Price has double format. Price cannot be negative and equls to 0. Try again!");
+                        Console.ResetColor();
+                    }
+                }
+
+                for (var i = 0; i < _productList.Count; i++)
+                {
+                    if (_productList[i].id == productId)
+                    {
+                        _productList[i].price = priceChange;
+                        Console.WriteLine("Price changed!\n");
+                    }
+                }
+            }
+            else
+            {
+                return;
+            }
+           
+        }
+
+        public void ChangeProductAmount()
+        {
+            int productId = GetProductId();
+            bool flagChangeAmount = true;
+            double amountChange = 0;
+            bool hasId = HasID(productId);
+
+            if (hasId)
+            {
+                while (flagChangeAmount)
+                {
+                    Console.Write("Enter product amount to change: ");
+
+                    bool isChangeAmount = double.TryParse(Console.ReadLine(), out amountChange);
+
+                    if (isChangeAmount)
+                    {
+                        flagChangeAmount = false;
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Amount has double format. Try again!\n");
+                        Console.ResetColor();
+                    }
+                }
+
+                if (amountChange > 0)
+                {
+                    _productList[productId - 1].amount += amountChange;
+                    Console.WriteLine("Amount changed.\n");
+                }
+                else if (amountChange < 0 && Math.Abs(amountChange) < _productList[productId - 1].amount)
+                {
+                    _productList[productId - 1].amount += amountChange;
+                    Console.WriteLine("Amount changed.\n");
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Input amount have to be less than curreent amount. Try again!\n");
+                    Console.ResetColor();
+
+                    return;
+                }
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        public bool HasID(int productId)
+        {
+            bool hasId = false;
+
+            for (var i = 0; i < _productList.Count; i++)
+            {
+                if (_productList[i].id == productId)
+                {
+                    hasId = true;
+                }
+            }
+
+            if (!hasId)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Uncorrect product ID. If you dont know product ID see the list of product. Try again!\n");
+                Console.ResetColor();
+            }
+
+            return hasId;
         }
     }
 }

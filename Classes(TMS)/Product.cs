@@ -57,7 +57,7 @@ namespace Classes_TMS_
                 else
                 {
                     flagName = false;
-                }                              
+                }
             }
 
             return productName;
@@ -74,14 +74,14 @@ namespace Classes_TMS_
 
                 bool isCorrectPrice = double.TryParse(Console.ReadLine(), out productPrice);
 
-                if (isCorrectPrice)
+                if (isCorrectPrice && productPrice > 0)
                 {
                     flagPrice = false;
                 }
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Price has double format. Try again!\n");
+                    Console.WriteLine("Price has double format. Price cannot be negative and equls to 0. Try again!\n");
                     Console.ResetColor();
                 }
             }
@@ -100,19 +100,19 @@ namespace Classes_TMS_
 
                 bool isCorrectAmount = double.TryParse(Console.ReadLine(), out productAmount);
 
-                if (isCorrectAmount)
+                if (isCorrectAmount && productAmount >= 0)
                 {
                     flagAmount = false;
                 }
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Amount has double format. Try again!\n");
+                    Console.WriteLine("Amount has double format. Amount cannot be negative. Try again!\n");
                     Console.ResetColor();
                 }
             }
 
             return productAmount;
-        }    
+        }
     }
 }
