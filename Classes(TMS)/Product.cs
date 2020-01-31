@@ -7,18 +7,20 @@ namespace Classes_TMS_
     public class Product
     {
         public string name;
+        public string category;
         public double price;
         public double amount;
         public static int sID = 1;
         public int id;
 
         public Product() { }
-        public Product(string name) : this(name, 0) { }
-        public Product(string name, double price) : this(name, price, 0) { }
+        public Product(string name, string category) : this(name, category, 0) { }
+        public Product(string name, string category, double price) : this(name, category,  price, 0) { }
 
-        public Product(string name, double price, double amount)
+        public Product(string name, string category, double price, double amount)
         {
             this.name = name;
+            this.category = category;
             this.price = price;
             this.amount = amount;
             id = sID;
@@ -28,12 +30,11 @@ namespace Classes_TMS_
         public Product GetProduct()
         {
             string productName = GetProductName();
-
+            string productCategory = GetProductCategory();
             double productPrice = GetProductPrice();
-
             double productCount = GetProductAmount();
 
-            Product newProduct = new Product(productName, productPrice, productCount);
+            Product newProduct = new Product(productName, productCategory, productPrice, productCount);
 
             return newProduct;
         }
@@ -61,6 +62,31 @@ namespace Classes_TMS_
             }
 
             return productName;
+        }
+
+        public string GetProductCategory()
+        {
+            bool flagName = true;
+            string productCategory = "";
+
+            while (flagName)
+            {
+                Console.Write("Product's category: ");
+                productCategory = Console.ReadLine();
+
+                if (string.IsNullOrEmpty(productCategory) || string.IsNullOrWhiteSpace(productCategory))
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Category can not be null or emtpry. Try again!\n");
+                    Console.ResetColor();
+                }
+                else
+                {
+                    flagName = false;
+                }
+            }
+
+            return productCategory;
         }
 
         public double GetProductPrice()

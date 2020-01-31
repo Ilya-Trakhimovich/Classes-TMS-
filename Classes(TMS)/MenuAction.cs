@@ -4,11 +4,12 @@ using System.Text;
 
 namespace Classes_TMS_
 {
-    enum Action
+    enum MenuAction
     {
         AddProduct = 1,
         RemoveProduct,
         ShowProducts,
+        ShowCategory,
         TotalPrice,
         ChangeProductAmount,
         ChangeProductPrice,

@@ -15,14 +15,17 @@ namespace Classes_TMS_
 
             var listProduct = new List<Product>()
             {
-                new Product("fish", 19, 15),
-                new Product("meat", 15, 50),
-                new Product("juice"),
-                new Product("chips", 1, 150),
-                new Product("beer", 21, 219),
-                new Product("apple", 4),
-                new Product("oil"),
-                new Product("pizza", 20, 350)             
+                new Product("shrimp", "seafood", 19, 15),
+                new Product("chiken fillet", "meat", 15, 50),
+                new Product("apple juice", "juice"),
+                new Product("seeds", "grocery", 1, 150),
+                new Product("beer", "alcohol", 21, 219),
+                new Product("apple", "fruits", 4),
+                new Product("oil", "grocery"),
+                new Product("beef", "meat", 20, 350),
+                new Product("sea fish", "seafood", 20),
+                new Product("minced pork", "meat"),
+                new Product("Bananas", "frutis", 200, 14)
             };
 
             for (var i = 0; i < listProduct.Count; i++)
@@ -38,7 +41,7 @@ namespace Classes_TMS_
 
                 switch (choice)
                 {
-                    case (int)Action.AddProduct:
+                    case (int)MenuAction.AddProduct:
                         {
                             var product = new Product();
 
@@ -47,37 +50,43 @@ namespace Classes_TMS_
 
                             break;
                         }
-                    case (int)Action.RemoveProduct:
+                    case (int)MenuAction.RemoveProduct:
                         {
                             store.RemoveProduct();
 
                             break;
                         }
-                    case (int)Action.ShowProducts:
+                    case (int)MenuAction.ShowProducts:
                         {
                             store.ShowProducts();
 
                             break;
                         }
-                    case (int)Action.TotalPrice:
+                    case (int)MenuAction.ShowCategory:
+                        {
+                            store.ShowCategory();
+
+                            break;                        
+                        }
+                    case (int)MenuAction.TotalPrice:
                         {
                             store.GetTotalPrice();
 
                             break;
                         }
-                    case (int)Action.ChangeProductAmount:
+                    case (int)MenuAction.ChangeProductAmount:
                         {
                             store.ChangeProductAmount();
 
                             break;
                         }
-                    case (int)Action.ChangeProductPrice:
+                    case (int)MenuAction.ChangeProductPrice:
                         {
                             store.ChangeProductPrice();
 
                             break;
                         }
-                    case (int)Action.Exit:
+                    case (int)MenuAction.Exit:
                         {
                             Environment.Exit(0);
                             break;

@@ -18,9 +18,40 @@ namespace Classes_TMS_
             for (var i = 0; i < _productList.Count; i++)
             {
                 Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine($"ID: {_productList[i].id}, Name: {_productList[i].name}, Count: {_productList[i].amount}, Price: {_productList[i].price}$\n");
+                Console.WriteLine($"ID: {_productList[i].id}, Name: {_productList[i].name}, Category: {_productList[i].category}, Count: {_productList[i].amount}, Price: {_productList[i].price}$\n");
                 Console.ResetColor();
             }
+        }
+
+        public void ShowCategory()
+        {
+            Product product = new Product();
+            List<Product> categoryList = new List<Product>();
+            string productCategory = product.GetProductCategory();
+            bool isCategory = false;
+
+            for (var i = 0; i < _productList.Count; i++)
+            {
+                if (_productList[i].category == productCategory)
+                {
+                    categoryList.Add(_productList[i]);
+                    isCategory = true;
+                }
+            }
+
+            if (!isCategory)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Error. Category isn't correct. If you dont know product's category see the list of products.\n");
+                Console.ResetColor();
+                return;
+            }
+
+            foreach (var cat in categoryList)
+            {
+                Console.WriteLine($"ID: {cat.id}, Name: {cat.name}, Category: {cat.category}, Amount: {cat.amount}, Price: {cat.price}\n");
+            }
+        
         }
 
         public void RemoveProduct()
@@ -110,6 +141,7 @@ namespace Classes_TMS_
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Price has double format. Price cannot be negative and equls to 0. Try again!");
                         Console.ResetColor();
+                        return;
                     }
                 }
 
