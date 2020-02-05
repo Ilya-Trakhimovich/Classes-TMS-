@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Classes_TMS_
+namespace StoreDLL
 {
     public class Product
     {
@@ -15,7 +15,7 @@ namespace Classes_TMS_
 
         public Product() { }
         public Product(string name, string category) : this(name, category, 0) { }
-        public Product(string name, string category, double price) : this(name, category,  price, 0) { }
+        public Product(string name, string category, double price) : this(name, category, price, 0) { }
 
         public Product(string name, string category, double price, double amount)
         {
@@ -142,3 +142,4 @@ namespace Classes_TMS_
         }
     }
 }
+

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Classes_TMS_
+namespace StoreDLL
 {
     public class Store
     {
@@ -10,7 +10,7 @@ namespace Classes_TMS_
 
         public void AddProduct(Product product)
         {
-            _productList.Add(product);
+            _productList.Add(product);            
         }
 
         public void ShowProducts()
@@ -18,9 +18,29 @@ namespace Classes_TMS_
             for (var i = 0; i < _productList.Count; i++)
             {
                 Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine($"ID: {_productList[i].id}, Name: {_productList[i].name}, Category: {_productList[i].category}, Count: {_productList[i].amount}, Price: {_productList[i].price}$\n");
+                Console.Write("ID: {0, -3} ", _productList[i].id);  
+                //Console.Write($"ID: {_productList[i].id}; ");
+
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.Write("Name: {0, -20} ", _productList[i].name);
+                //Console.Write($"Name: {_productList[i].name}; \t");
+
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.Write("Category: {0, -15} ", _productList[i].category);
+                //Console.Write($"Category: {_productList[i].category}; \t");
+
+                Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                Console.Write("Amount: {0, -10} ", _productList[i].amount);
+                //Console.Write($"Count: {_productList[i].amount}; \t");
+
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.Write("Price: {0, -5} \n", _productList[i].price);
+                //Console.Write($"Price: {_productList[i].price}\n");
+
                 Console.ResetColor();
             }
+
+            Console.WriteLine();
         }
 
         public void ShowCategory()
@@ -47,11 +67,30 @@ namespace Classes_TMS_
                 return;
             }
 
+            Console.WriteLine();
+
             foreach (var cat in categoryList)
             {
-                Console.WriteLine($"ID: {cat.id}, Name: {cat.name}, Category: {cat.category}, Amount: {cat.amount}, Price: {cat.price}\n");
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.Write($"ID: {cat.id}; ");
+
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.Write($"Name: {cat.name}; ");
+
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.Write($"Category: {cat.category}; ");
+
+                Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                Console.Write($"Count: {cat.amount}; ");
+
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.Write($"Price: {cat.price}\n");
+
+                Console.ResetColor();
             }
-        
+
+            Console.WriteLine("\nPress any key to continue.");
+            Console.ReadKey();
         }
 
         public void RemoveProduct()
@@ -77,6 +116,9 @@ namespace Classes_TMS_
                 Console.WriteLine("Error. Name or ID isn't correct. If you dont know product's NAME and ID see the list of products.\n");
                 Console.ResetColor();
             }
+
+            Console.WriteLine("\nPress any key to continue.");
+            Console.ReadKey();
         }
 
         public void GetTotalPrice()
@@ -89,9 +131,11 @@ namespace Classes_TMS_
             }
 
             Console.WriteLine($"Total price: {totalPrice}$\n");
+            Console.WriteLine("\nPress any key to continue.");
+            Console.ReadKey();
         }
 
-        public int GetProductId()
+        private int GetProductId()
         {
             bool flagId = true;
             int productId = 0;
@@ -139,8 +183,11 @@ namespace Classes_TMS_
                     else
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Price has double format. Price cannot be negative and equls to 0. Try again!");
+                        Console.WriteLine("Price has double format. Price cannot be negative. Try again!");
                         Console.ResetColor();
+                        Console.WriteLine("\nPress any key to continue.");
+                        Console.ReadKey();
+
                         return;
                     }
                 }
@@ -158,7 +205,9 @@ namespace Classes_TMS_
             {
                 return;
             }
-           
+
+            Console.WriteLine("\nPress any key to continue.");
+            Console.ReadKey();
         }
 
         public void ChangeProductAmount()
@@ -193,7 +242,7 @@ namespace Classes_TMS_
                     _productList[productId - 1].amount += amountChange;
                     Console.WriteLine("Amount changed.\n");
                 }
-                else if (amountChange < 0 && Math.Abs(amountChange) < _productList[productId - 1].amount)
+                else if (amountChange < 0 && Math.Abs(amountChange) <= _productList[productId - 1].amount)
                 {
                     _productList[productId - 1].amount += amountChange;
                     Console.WriteLine("Amount changed.\n");
@@ -201,8 +250,10 @@ namespace Classes_TMS_
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Input amount have to be less than curreent amount. Try again!\n");
+                    Console.WriteLine("Input amount have to be less than current amount. Try again!\n");
                     Console.ResetColor();
+                    Console.WriteLine("\nPress any key to continue.");
+                    Console.ReadKey();
 
                     return;
                 }
@@ -211,9 +262,12 @@ namespace Classes_TMS_
             {
                 return;
             }
+
+            Console.WriteLine("\nPress any key to continue.");
+            Console.ReadKey();
         }
 
-        public bool HasID(int productId)
+        private bool HasID(int productId)
         {
             bool hasId = false;
 
@@ -230,6 +284,8 @@ namespace Classes_TMS_
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Uncorrect product ID. If you dont know product ID see the list of product. Try again!\n");
                 Console.ResetColor();
+                Console.WriteLine("\nPress any key to continue.");
+                Console.ReadKey();
             }
 
             return hasId;

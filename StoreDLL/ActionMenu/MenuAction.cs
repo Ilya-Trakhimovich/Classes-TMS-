@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Classes_TMS_
+namespace StoreDLL
 {
-    enum MenuAction
+    public enum MenuAction
     {
-        AddProduct = 1,
+        AddProduct = 0,
         RemoveProduct,
-        ShowProducts,
         ShowCategory,
         TotalPrice,
         ChangeProductAmount,

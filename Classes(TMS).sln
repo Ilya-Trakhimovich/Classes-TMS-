@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Classes(TMS)", "Classes(TMS)\Classes(TMS).csproj", "{95BADD0C-42CA-4D99-9068-8CBFE3B9D67E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Classes(TMS)", "Classes(TMS)\Classes(TMS).csproj", "{95BADD0C-42CA-4D99-9068-8CBFE3B9D67E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StoreDLL", "StoreDLL\StoreDLL.csproj", "{67E384AB-B6C5-4471-B29A-EC7C72BE18C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{95BADD0C-42CA-4D99-9068-8CBFE3B9D67E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95BADD0C-42CA-4D99-9068-8CBFE3B9D67E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95BADD0C-42CA-4D99-9068-8CBFE3B9D67E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67E384AB-B6C5-4471-B29A-EC7C72BE18C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67E384AB-B6C5-4471-B29A-EC7C72BE18C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67E384AB-B6C5-4471-B29A-EC7C72BE18C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67E384AB-B6C5-4471-B29A-EC7C72BE18C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

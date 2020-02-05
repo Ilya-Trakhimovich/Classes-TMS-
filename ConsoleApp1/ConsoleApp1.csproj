@@ -3,11 +3,6 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>Classes_TMS_</RootNamespace>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\StoreDLL\StoreDLL.csproj" />
-  </ItemGroup>
 
 </Project>
