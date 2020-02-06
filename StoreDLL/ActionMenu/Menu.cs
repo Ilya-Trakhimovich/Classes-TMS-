@@ -6,8 +6,8 @@ namespace StoreDLL
 {
     public class Menu
     {
-        private string _arrow = "--> ";
-        private string[] _menu =
+        private const string _arrow = "--> ";
+        private readonly string[] _menu =
             {
                 "  Add product;",
                 "  Remove product;",
@@ -22,11 +22,10 @@ namespace StoreDLL
         {
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"\t\t\t\t { DateTime.Now}");            
-            Console.WriteLine(new string('_', 80));
-
+            Console.WriteLine(new string('_', 100));
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("\n\t\t\t\tCONSOLE APPLICATION MENU\n");
-            Console.WriteLine(new string('_', 80));
+            Console.WriteLine(new string('_', 100));
 
             Store tempStore = store;
 

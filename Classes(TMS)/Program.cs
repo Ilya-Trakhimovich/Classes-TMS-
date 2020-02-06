@@ -5,20 +5,25 @@ using StoreDLL;
 namespace Classes_TMS_
 {
     class Program
-    {       
+    {
         static void Main(string[] args)
-        {     
+        {
+
+
+
             Menu menu = new Menu();
-            Store store = CreateDefaultList();            
-            bool flag = true;            
+            Store store = CreateDefaultList();
+            bool flag = true;
 
             while (flag)
             {
                 int choice = menu.ShowMenu(store);
-                
-                switch (choice)
+
+                var tempChoice = (MenuAction)choice;
+
+                switch (tempChoice)
                 {
-                    case (int)MenuAction.AddProduct:
+                    case MenuAction.AddProduct:
                         {
                             var product = new Product();
 
@@ -31,44 +36,44 @@ namespace Classes_TMS_
 
                             break;
                         }
-                    case (int)MenuAction.RemoveProduct:
+                    case MenuAction.RemoveProduct:
                         {
                             store.RemoveProduct();
 
                             break;
                         }
-                    case (int)MenuAction.ShowCategory:
+                    case MenuAction.ShowCategory:
                         {
                             store.ShowCategory();
 
                             break;
                         }
-                    case (int)MenuAction.TotalPrice:
+                    case MenuAction.TotalPrice:
                         {
                             store.GetTotalPrice();
 
                             break;
                         }
-                    case (int)MenuAction.ChangeProductAmount:
+                    case MenuAction.ChangeProductAmount:
                         {
                             store.ChangeProductAmount();
 
                             break;
                         }
-                    case (int)MenuAction.ChangeProductPrice:
+                    case MenuAction.ChangeProductPrice:
                         {
                             store.ChangeProductPrice();
 
                             break;
                         }
-                    case (int)MenuAction.Exit:
+                    case MenuAction.Exit:
                         {
                             Environment.Exit(0);
                             break;
                         }
                 }
             }
-        }
+    }
 
         private static Store CreateDefaultList()
         {

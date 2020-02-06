@@ -6,24 +6,23 @@ namespace StoreDLL
 {
     public class Product
     {
-        public string name;
-        public string category;
-        public double price;
-        public double amount;
         public static int sID = 1;
-        public int id;
+        public string Name { get; set; }
+        public string Category { get; set; }
+        public double Price { get; set; }
+        public double Amount { get; set; }
+        public int Id { get; set; }        
 
         public Product() { }
         public Product(string name, string category) : this(name, category, 0) { }
         public Product(string name, string category, double price) : this(name, category, price, 0) { }
-
         public Product(string name, string category, double price, double amount)
         {
-            this.name = name;
-            this.category = category;
-            this.price = price;
-            this.amount = amount;
-            id = sID;
+            this.Name = name;
+            this.Category = category;
+            this.Price = price;
+            this.Amount = amount;
+            Id = sID;
             sID++;
         }
 

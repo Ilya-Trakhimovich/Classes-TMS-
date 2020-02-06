@@ -7,6 +7,7 @@ namespace StoreDLL
     public class Store
     {
         private List<Product> _productList = new List<Product>();
+        private const string pressKey= "\nPress any key to continue";
 
         public void AddProduct(Product product)
         {
@@ -18,24 +19,19 @@ namespace StoreDLL
             for (var i = 0; i < _productList.Count; i++)
             {
                 Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.Write("ID: {0, -3} ", _productList[i].id);  
-                //Console.Write($"ID: {_productList[i].id}; ");
+                Console.Write("ID: {0, -3} ", _productList[i].Id);  
 
                 Console.ForegroundColor = ConsoleColor.Blue;
-                Console.Write("Name: {0, -20} ", _productList[i].name);
-                //Console.Write($"Name: {_productList[i].name}; \t");
+                Console.Write("Name: {0, -20} ", _productList[i].Name);
 
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.Write("Category: {0, -15} ", _productList[i].category);
-                //Console.Write($"Category: {_productList[i].category}; \t");
+                Console.Write("Category: {0, -15} ", _productList[i].Category);
 
                 Console.ForegroundColor = ConsoleColor.DarkMagenta;
-                Console.Write("Amount: {0, -10} ", _productList[i].amount);
-                //Console.Write($"Count: {_productList[i].amount}; \t");
+                Console.Write("Amount: {0, -10} ", _productList[i].Amount);
 
                 Console.ForegroundColor = ConsoleColor.DarkGreen;
-                Console.Write("Price: {0, -5} \n", _productList[i].price);
-                //Console.Write($"Price: {_productList[i].price}\n");
+                Console.Write("Price: {0, -5} \n", _productList[i].Price);
 
                 Console.ResetColor();
             }
@@ -52,7 +48,7 @@ namespace StoreDLL
 
             for (var i = 0; i < _productList.Count; i++)
             {
-                if (_productList[i].category == productCategory)
+                if (_productList[i].Category == productCategory)
                 {
                     categoryList.Add(_productList[i]);
                     isCategory = true;
@@ -72,24 +68,24 @@ namespace StoreDLL
             foreach (var cat in categoryList)
             {
                 Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.Write($"ID: {cat.id}; ");
+                Console.Write("ID: {0, -3} ", cat.Id);
 
                 Console.ForegroundColor = ConsoleColor.Blue;
-                Console.Write($"Name: {cat.name}; ");
+                Console.Write("Name: {0, -20} ", cat.Name);
 
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.Write($"Category: {cat.category}; ");
+                Console.Write("Category: {0, -15} ", cat.Category);
 
                 Console.ForegroundColor = ConsoleColor.DarkMagenta;
-                Console.Write($"Count: {cat.amount}; ");
+                Console.Write("Amount: {0, -10} ", cat.Amount);
 
                 Console.ForegroundColor = ConsoleColor.DarkGreen;
-                Console.Write($"Price: {cat.price}\n");
+                Console.Write("Price: {0, -5} \n", cat.Price);
 
                 Console.ResetColor();
             }
 
-            Console.WriteLine("\nPress any key to continue.");
+            Console.WriteLine(pressKey);
             Console.ReadKey();
         }
 
@@ -102,7 +98,7 @@ namespace StoreDLL
 
             for (var i = 0; i < _productList.Count; i++)
             {
-                if (_productList[i].name == productName && _productList[i].id == productId)
+                if (_productList[i].Name == productName && _productList[i].Id == productId)
                 {
                     _productList.Remove(_productList[i]);
                     Console.WriteLine("Product remooved.\n");
@@ -117,7 +113,7 @@ namespace StoreDLL
                 Console.ResetColor();
             }
 
-            Console.WriteLine("\nPress any key to continue.");
+            Console.WriteLine(pressKey);
             Console.ReadKey();
         }
 
@@ -127,11 +123,11 @@ namespace StoreDLL
 
             for (var i = 0; i < _productList.Count; i++)
             {
-                totalPrice += (_productList[i].price * _productList[i].amount);
+                totalPrice += (_productList[i].Price * _productList[i].Amount);
             }
 
             Console.WriteLine($"Total price: {totalPrice}$\n");
-            Console.WriteLine("\nPress any key to continue.");
+            Console.WriteLine(pressKey);
             Console.ReadKey();
         }
 
@@ -185,7 +181,7 @@ namespace StoreDLL
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Price has double format. Price cannot be negative. Try again!");
                         Console.ResetColor();
-                        Console.WriteLine("\nPress any key to continue.");
+                        Console.WriteLine(pressKey);
                         Console.ReadKey();
 
                         return;
@@ -194,9 +190,9 @@ namespace StoreDLL
 
                 for (var i = 0; i < _productList.Count; i++)
                 {
-                    if (_productList[i].id == productId)
+                    if (_productList[i].Id == productId)
                     {
-                        _productList[i].price = priceChange;
+                        _productList[i].Price = priceChange;
                         Console.WriteLine("Price changed!\n");
                     }
                 }
@@ -206,7 +202,7 @@ namespace StoreDLL
                 return;
             }
 
-            Console.WriteLine("\nPress any key to continue.");
+            Console.WriteLine(pressKey);
             Console.ReadKey();
         }
 
@@ -239,12 +235,12 @@ namespace StoreDLL
 
                 if (amountChange > 0)
                 {
-                    _productList[productId - 1].amount += amountChange;
+                    _productList[productId - 1].Amount += amountChange;
                     Console.WriteLine("Amount changed.\n");
                 }
-                else if (amountChange < 0 && Math.Abs(amountChange) <= _productList[productId - 1].amount)
+                else if (amountChange < 0 && Math.Abs(amountChange) <= _productList[productId - 1].Amount)
                 {
-                    _productList[productId - 1].amount += amountChange;
+                    _productList[productId - 1].Amount += amountChange;
                     Console.WriteLine("Amount changed.\n");
                 }
                 else
@@ -252,7 +248,7 @@ namespace StoreDLL
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Input amount have to be less than current amount. Try again!\n");
                     Console.ResetColor();
-                    Console.WriteLine("\nPress any key to continue.");
+                    Console.WriteLine(pressKey);
                     Console.ReadKey();
 
                     return;
@@ -263,7 +259,7 @@ namespace StoreDLL
                 return;
             }
 
-            Console.WriteLine("\nPress any key to continue.");
+            Console.WriteLine(pressKey);
             Console.ReadKey();
         }
 
@@ -273,7 +269,7 @@ namespace StoreDLL
 
             for (var i = 0; i < _productList.Count; i++)
             {
-                if (_productList[i].id == productId)
+                if (_productList[i].Id == productId)
                 {
                     hasId = true;
                 }
@@ -284,7 +280,7 @@ namespace StoreDLL
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Uncorrect product ID. If you dont know product ID see the list of product. Try again!\n");
                 Console.ResetColor();
-                Console.WriteLine("\nPress any key to continue.");
+                Console.WriteLine(pressKey);
                 Console.ReadKey();
             }
 
